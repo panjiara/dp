@@ -1,5 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
+int I,J,n;
+int check(int A[],int i,int j)
+{
+    int sum=0;
+    int flag=0;
+ while(i!=j||sum!=A[n-1])
+ {
+     sum=A[i]+A[j];
+   if(sum>A[n-1])
+   {
+       sum=A[i]+A[j-1];
+   }
+   if(sum<A[n-1])
+   {
+       sum=A[i+1]+A[j];
+   }
+   if(sum=A[n-1])
+   {
+       break;
+       I=i;
+       J=j;
+       flag=1;
+
+   }
+
+ }
+ if(flag==1)
+    return 1;
+ else
+    return 0;
+}
 int main()
 {
   int T;
@@ -9,27 +40,23 @@ int main()
     int N,K;
     cin>>N>>K;
      int A[N];
+     n=N;
     for(int i=0;i<N;i++)
         cin>>A[i];
         int result=0;
-        for(int L=1;L<N;L++)
+        I=0,J=N-1;
+        while(I!=J)
         {
-            for(int i=0;i<N-1-L+1;i++)
-            {
-                int j=i+L-1;
-                int sum=0;
-                for(int k=i;k<=j;k++)
-                {
-                   sum=sum+A[k];
-                }
-                if(sum==A[N-1])
-                {
-                  result++;
-                }
-
-            }
+            if(check(A,I,J))
+              {
+                 result++;
+               }
 
         }
+
+
+
+
         if(result==K)
         {
             cout<<"yes"<<endl;
