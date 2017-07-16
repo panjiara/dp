@@ -48,7 +48,7 @@ int main()
         cin>>A[i];
         int result=0;
         I=0,J=N-2;
-        while(I!=J)
+        while(I!=j)
         {
             if(check(A,I,J))
               {
